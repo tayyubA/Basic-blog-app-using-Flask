@@ -1,0 +1,179 @@
+/* Reset some default browser styles */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensures padding and border are included in element width/height */
+}
+
+/* Basic body styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6; /* Improves readability */
+}
+
+/* Container for centering content */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px; /* Add some padding for comfortable spacing */
+}
+
+/* Navigation bar */
+/* Navbar Styles */
+nav {
+    background-color: #4A90E2; /* A calming blue */
+    color: white;
+    padding: 1rem 0; /* Use rems for better scalability */
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.btn {
+    background-color: white;
+    color: #4A90E2;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    border-radius: 30px;
+    border: 2px solid #4A90E2;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn:hover {
+    background-color: #4A90E2;
+    color: white;
+}
+
+/* Main content area */
+main {
+    padding: 2rem 0;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Create Post Form Styles */
+form {
+    max-width: 600px; /* Limit form width for better readability */
+    margin: 2rem auto; /* Center the form */
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block; /* Makes labels appear on their own line */
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensures padding is included in width */
+}
+
+textarea {
+    height: 150px; /* Adjust as needed */
+    resize: vertical; /* Allow only vertical resizing */
+}
+
+button[type="submit"] {
+    background-color: #4A90E2; /* Match navbar button color */
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #3177b8; /* Darker blue on hover */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+    form {
+        max-width: 90%; /* Form takes up most of the screen on smaller devices */
+        padding: 0 1rem;
+    }
+}
+
+/* File upload button styles */
+.file-upload input[type="file"] {
+    display: none;
+}
+
+.file-upload-btn {
+    background-color: #ffffff;
+    color: #3177b8;
+    border: 2px solid #3177b8;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.file-upload-btn:hover {
+    background-color: #3177b8;
+    color: white;
+}
+
+#file-name {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Side-by-side buttons */
+.buttons-container {
+    display: flex;
+    gap: 20px; /* Space between the buttons */
+    justify-content: center; /* Center the buttons */
+    margin-top: 1rem; /* Adds space above the buttons */
+}
+
+button[type="submit"],
+.cancel-btn {
+    padding: 0.8rem 1.5rem;
+    background-color: #4A90E2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover,
+.cancel-btn:hover {
+    background-color: #3177b8;
+}
+
+.cancel-btn {
+    background-color: #f44336; /* Red background for cancel button */
+    border-radius: 5px;
+}
+
+.cancel-btn:hover {
+    background-color: #e53935;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <h1 class="logo">My Blog</h1>
+            <a href="/create_post" class="btn">Create Post</a>
+            
+            <!-- Add logout button if user is logged in -->
+            {% if session.get('user') %}
+            <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+            {% else %}
+            <a href="/login" class="btn">Login</a>
+            {% endif %}
+        </div>
+    </nav>
+    
+    <main>
+        <div class="container">
+            <h2>All Posts</h2>
+            <div class="posts">
+                {% for post in posts %}
+                <div class="post">
+                    <h3>{{ post.title }}</h3>
+                    <p>{{ post.content }}</p>
+                    {% if post.image %}
+                        <div class="image-container">
+                            <img src="{{ url_for('static', filename='uploads/' + post.image) }}" alt="Post Image" class="post-image">
+                        </div>
+                        
+                    {% endif %}
+                    <small>Posted on {{ post.date }}</small>
+                    <h3>Comments</h3>
+                    {% for comment in post.comments %}
+                    <div class="comment">
+                        <p><strong>{{ comment.author }}</strong> ({{ comment.date }}): {{ comment.comment }}</p>
+                    </div>
+                    {% endfor %}
+
+                    <!-- Comment Form for each post -->
+                    <form action="{{ url_for('home') }}" method="POST" class="comment-form">
+                        <input type="hidden" name="post_id" value="{{ post._id }}">
+                        <input type="text" name="author_name" placeholder="Your name" required>
+                        <textarea name="content" placeholder="Your comment" required></textarea>
+                        <button type="submit">Submit Comment</button>
+                    </form>
+                    
+
+                    <!-- Display Comments for each post -->
+                    <div class="comments">
+                        {% for comment in post.comments %}
+                        <div class="comment">
+                            <p><strong>{{ comment.author_name }}:</strong> {{ comment.content }}</p>
+                            <small>Posted on {{ comment.date }}</small>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <h1>Welcome to bloga</h1>
+                <!-- <a href="/" class="btn">Home</a> -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Flash message display area -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                <ul>
+                    {% for category, message in messages %}
+                        <li class="flash {{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    {% endwith %}
+    
+    <main>
+        <div class="container">
+            <h2>Login</h2>
+            <form action="/login" method="POST">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                
+                <button type="submit" class="btn">Login</button>
+            </form>
+            <!-- <p>Don't have an account? <a href="/register">Register</a></p> -->
+        </div>
+    </main>
+</body>
+</html>
